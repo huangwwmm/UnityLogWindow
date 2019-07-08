@@ -30,5 +30,10 @@ namespace Debug
 			Text = text;
 			ST = stackTrace;
 		}
+
+		public string GetLogHash()
+		{
+			return string.Format("{0}-{1}-{2}", LT, Tag, Text);
+		}
 	}
 }

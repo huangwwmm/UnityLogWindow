@@ -30,6 +30,7 @@ namespace Debug
 			m_OpenButton.Visible = m_ConsoleType == LogConsoleType.File;
 			m_RefreshButton.Visible = m_ConsoleType == LogConsoleType.File;
 			m_ClearButton.Visible = m_ConsoleType == LogConsoleType.Console;
+			m_EnsureCheckBox.Visible = m_ConsoleType == LogConsoleType.Console;
 		}
 
 		public void AddLogItemToAllLogItemAndListView(LogItem item)
@@ -138,6 +139,7 @@ namespace Debug
 
 			m_ListView.BeginUpdate();
 			m_ListView.Items.Clear();
+			m_LogFilter.Reset(m_ShowStackTrace);
 
 			for (int iItem = 0; iItem < m_AllLogItem.Count; iItem++)
 			{
@@ -160,7 +162,7 @@ namespace Debug
 				case LogType.Error:
 					return Color.Red;
 				case LogType.Warning:
-					return Color.FromArgb(198, 87, 3);
+					return Color.FromArgb(176, 79, 3);
 				case LogType.Log:
 					return Color.Green;
 				case LogType.Assert:
@@ -265,6 +267,16 @@ namespace Debug
 		private void OnStackTraceCheckBox_CheckedChanged(object sender, EventArgs e)
 		{
 			m_ShowStackTrace = m_StackTraceCheckBox.Checked;
+		}
+
+		private void OnCollapseCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			m_LogFilter.Collapse = m_CollapseCheckBox.Checked;
+		}
+
+		private void OnFilterTextBox_TextChanged(object sender, EventArgs e)
+		{
+			m_LogFilter.FilterText = m_FilterTextBox.Text.ToUpper();
 		}
 		#endregion
 	}

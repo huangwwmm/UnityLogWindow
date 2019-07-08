@@ -30,9 +30,11 @@
 		{
 			System.Windows.Forms.Label label1;
 			PresentationControls.CheckBoxProperties checkBoxProperties1 = new PresentationControls.CheckBoxProperties();
+			System.Windows.Forms.Label label2;
 			this.m_TopPanel = new System.Windows.Forms.Panel();
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
 			this.m_EnsureCheckBox = new System.Windows.Forms.CheckBox();
+			this.m_CollapseCheckBox = new System.Windows.Forms.CheckBox();
 			this.m_StackTraceCheckBox = new System.Windows.Forms.CheckBox();
 			this.m_FilterButton = new System.Windows.Forms.Button();
 			this.m_RefreshButton = new System.Windows.Forms.Button();
@@ -46,7 +48,9 @@
 			this.m_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.m_LogRichTextBox = new System.Windows.Forms.RichTextBox();
 			this.m_LevelComboBox = new PresentationControls.CheckBoxComboBox();
+			this.m_FilterTextBox = new System.Windows.Forms.TextBox();
 			label1 = new System.Windows.Forms.Label();
+			label2 = new System.Windows.Forms.Label();
 			this.m_TopPanel.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -54,7 +58,7 @@
 			// label1
 			// 
 			label1.AutoSize = true;
-			label1.Location = new System.Drawing.Point(6, 7);
+			label1.Location = new System.Drawing.Point(332, 7);
 			label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
 			label1.Name = "label1";
 			label1.Padding = new System.Windows.Forms.Padding(0, 14, 0, 0);
@@ -78,18 +82,21 @@
 			this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.flowLayoutPanel1.AutoSize = true;
 			this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.flowLayoutPanel1.Controls.Add(label2);
+			this.flowLayoutPanel1.Controls.Add(this.m_FilterTextBox);
 			this.flowLayoutPanel1.Controls.Add(label1);
 			this.flowLayoutPanel1.Controls.Add(this.m_LevelComboBox);
 			this.flowLayoutPanel1.Controls.Add(this.m_EnsureCheckBox);
+			this.flowLayoutPanel1.Controls.Add(this.m_CollapseCheckBox);
 			this.flowLayoutPanel1.Controls.Add(this.m_StackTraceCheckBox);
 			this.flowLayoutPanel1.Controls.Add(this.m_FilterButton);
 			this.flowLayoutPanel1.Controls.Add(this.m_RefreshButton);
 			this.flowLayoutPanel1.Controls.Add(this.m_ClearButton);
-			this.flowLayoutPanel1.Location = new System.Drawing.Point(947, 0);
+			this.flowLayoutPanel1.Location = new System.Drawing.Point(447, 0);
 			this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
 			this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 7, 0, 0);
-			this.flowLayoutPanel1.Size = new System.Drawing.Size(936, 57);
+			this.flowLayoutPanel1.Size = new System.Drawing.Size(1436, 57);
 			this.flowLayoutPanel1.TabIndex = 3;
 			// 
 			// m_EnsureCheckBox
@@ -97,7 +104,7 @@
 			this.m_EnsureCheckBox.AutoSize = true;
 			this.m_EnsureCheckBox.Checked = true;
 			this.m_EnsureCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.m_EnsureCheckBox.Location = new System.Drawing.Point(339, 12);
+			this.m_EnsureCheckBox.Location = new System.Drawing.Point(665, 12);
 			this.m_EnsureCheckBox.Margin = new System.Windows.Forms.Padding(6, 5, 44, 5);
 			this.m_EnsureCheckBox.Name = "m_EnsureCheckBox";
 			this.m_EnsureCheckBox.Size = new System.Drawing.Size(102, 25);
@@ -105,10 +112,26 @@
 			this.m_EnsureCheckBox.Text = "Ensure";
 			this.m_EnsureCheckBox.UseVisualStyleBackColor = true;
 			// 
+			// m_CollapseCheckBox
+			// 
+			this.m_CollapseCheckBox.AutoSize = true;
+			this.m_CollapseCheckBox.Checked = true;
+			this.m_CollapseCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.m_CollapseCheckBox.Location = new System.Drawing.Point(817, 12);
+			this.m_CollapseCheckBox.Margin = new System.Windows.Forms.Padding(6, 5, 44, 5);
+			this.m_CollapseCheckBox.Name = "m_CollapseCheckBox";
+			this.m_CollapseCheckBox.Size = new System.Drawing.Size(124, 25);
+			this.m_CollapseCheckBox.TabIndex = 7;
+			this.m_CollapseCheckBox.Text = "Collapse";
+			this.m_CollapseCheckBox.UseVisualStyleBackColor = true;
+			this.m_CollapseCheckBox.CheckedChanged += new System.EventHandler(this.OnCollapseCheckBox_CheckedChanged);
+			// 
 			// m_StackTraceCheckBox
 			// 
 			this.m_StackTraceCheckBox.AutoSize = true;
-			this.m_StackTraceCheckBox.Location = new System.Drawing.Point(491, 12);
+			this.m_StackTraceCheckBox.Checked = true;
+			this.m_StackTraceCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.m_StackTraceCheckBox.Location = new System.Drawing.Point(991, 12);
 			this.m_StackTraceCheckBox.Margin = new System.Windows.Forms.Padding(6, 5, 44, 5);
 			this.m_StackTraceCheckBox.Name = "m_StackTraceCheckBox";
 			this.m_StackTraceCheckBox.Size = new System.Drawing.Size(146, 25);
@@ -120,7 +143,7 @@
 			// m_FilterButton
 			// 
 			this.m_FilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.m_FilterButton.Location = new System.Drawing.Point(687, 12);
+			this.m_FilterButton.Location = new System.Drawing.Point(1187, 12);
 			this.m_FilterButton.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
 			this.m_FilterButton.Name = "m_FilterButton";
 			this.m_FilterButton.Size = new System.Drawing.Size(73, 40);
@@ -132,7 +155,7 @@
 			// m_RefreshButton
 			// 
 			this.m_RefreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.m_RefreshButton.Location = new System.Drawing.Point(772, 12);
+			this.m_RefreshButton.Location = new System.Drawing.Point(1272, 12);
 			this.m_RefreshButton.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
 			this.m_RefreshButton.Name = "m_RefreshButton";
 			this.m_RefreshButton.Size = new System.Drawing.Size(73, 40);
@@ -144,7 +167,7 @@
 			// m_ClearButton
 			// 
 			this.m_ClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.m_ClearButton.Location = new System.Drawing.Point(857, 12);
+			this.m_ClearButton.Location = new System.Drawing.Point(1357, 12);
 			this.m_ClearButton.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
 			this.m_ClearButton.Name = "m_ClearButton";
 			this.m_ClearButton.Size = new System.Drawing.Size(73, 40);
@@ -231,11 +254,30 @@
 			this.m_LevelComboBox.CheckBoxProperties = checkBoxProperties1;
 			this.m_LevelComboBox.DisplayMemberSingleItem = "";
 			this.m_LevelComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.m_LevelComboBox.Location = new System.Drawing.Point(94, 12);
+			this.m_LevelComboBox.Location = new System.Drawing.Point(420, 12);
 			this.m_LevelComboBox.Margin = new System.Windows.Forms.Padding(6, 5, 44, 5);
 			this.m_LevelComboBox.Name = "m_LevelComboBox";
 			this.m_LevelComboBox.Size = new System.Drawing.Size(195, 29);
 			this.m_LevelComboBox.TabIndex = 3;
+			// 
+			// m_FilterTextBox
+			// 
+			this.m_FilterTextBox.Location = new System.Drawing.Point(102, 10);
+			this.m_FilterTextBox.Name = "m_FilterTextBox";
+			this.m_FilterTextBox.Size = new System.Drawing.Size(221, 31);
+			this.m_FilterTextBox.TabIndex = 8;
+			this.m_FilterTextBox.TextChanged += new System.EventHandler(this.OnFilterTextBox_TextChanged);
+			// 
+			// label2
+			// 
+			label2.AutoSize = true;
+			label2.Location = new System.Drawing.Point(6, 7);
+			label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+			label2.Name = "label2";
+			label2.Padding = new System.Windows.Forms.Padding(0, 14, 0, 0);
+			label2.Size = new System.Drawing.Size(87, 35);
+			label2.TabIndex = 9;
+			label2.Text = "Filter:";
 			// 
 			// LogConsoleWindow
 			// 
@@ -275,5 +317,7 @@
 		private System.Windows.Forms.Button m_ClearButton;
 		private System.Windows.Forms.CheckBox m_StackTraceCheckBox;
 		private System.Windows.Forms.CheckBox m_EnsureCheckBox;
+		private System.Windows.Forms.CheckBox m_CollapseCheckBox;
+		private System.Windows.Forms.TextBox m_FilterTextBox;
 	}
 }
