@@ -55,6 +55,7 @@ namespace Debug
 				ForeColor = GetLevelColor(item.LT),
 				Tag = item
 			};
+			
 			listViewItem.SubItems.Add(item.DT.ToLocalTime().ToString("yyyy/MM/dd HH:mm:ss.fff"));
 			listViewItem.SubItems.Add(item.Tag);
 			listViewItem.SubItems.Add(FormatLogText(item.Text));
@@ -159,7 +160,7 @@ namespace Debug
 				case LogType.Error:
 					return Color.Red;
 				case LogType.Warning:
-					return Color.FromArgb(232, 143, 3);
+					return Color.FromArgb(198, 87, 3);
 				case LogType.Log:
 					return Color.Green;
 				case LogType.Assert:
